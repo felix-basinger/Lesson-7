@@ -8,13 +8,13 @@ int Read(string arg)
     return a;
 }
 
- void Average()
+ int[,] CreateArray()
  {
     System.Console.WriteLine("Enter the size of matrix: ");
     int m = Read("count of strings in the matrix");
     int n = Read("count of columns in the matrix");
     int[,] matrix = new int[m, n];
-    int[] sum = new int[n];
+     
     for (int i = 0; i < m; i++)
     {
         for (int j = 0; j < n; j++)
@@ -23,9 +23,14 @@ int Read(string arg)
         }
     }
     System.Console.WriteLine();
-    for (int i = 0; i < m; i++)
+    return matrix;
+ }
+
+void PrintArray(int[,] matrix)
+{
+    for (int i = 0; i < matrix.GetLength(0); i++)
     {
-        for (int j = 0; j < n; j++)
+        for (int j = 0; j < matrix.GetLength(1); j++)
         {
             System.Console.Write(matrix[i, j] + " ");
          
@@ -33,23 +38,30 @@ int Read(string arg)
         System.Console.WriteLine();
     }
     System.Console.WriteLine();
+}
 
-    for (int i = 0; i < n; i++)
+void Average(int[,] matrix)
+{
+    int[] sum = new int[matrix.GetLength(1)];
+
+    for (int i = 0; i < matrix.GetLength(1); i++)
     {
-        for (int j = 0; j < m; j++)
+        for (int j = 0; j < matrix.GetLength(0); j++)
         {
             sum[i] += matrix[j, i];
         }
     }
 
     int count = 1;
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < matrix.GetLength(1); i++)
     {
         double num = Convert.ToDouble(sum[i]);
         System.Console.Write($"Result of the {count} column = ");
         count++;
-        System.Console.WriteLine(Math.Round(num / m, 2));
+        System.Console.WriteLine(Math.Round(num / matrix.GetLength(0), 2));
     }
  }
 
- Average();
+int[,] array = CreateArray();
+PrintArray(array);
+Average(array);
