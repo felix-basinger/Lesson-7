@@ -55,11 +55,7 @@ void FindYourElem(int[,] matrix)
     {
         if(a <  matrix.GetLength(0) && b <  matrix.GetLength(1))
         {
-            if(a < 0 && b < 0)
-            {
-
-            }
-        System.Console.WriteLine($"Your element with value {a},{b} = {matrix[a, b]}");
+            System.Console.WriteLine($"Your element with value {a},{b} = {matrix[a, b]}");
         }
         else System.Console.WriteLine($"Your element with value {a},{b} IS NOT EXIST!");
     }
